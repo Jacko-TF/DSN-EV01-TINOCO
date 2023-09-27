@@ -1,0 +1,62 @@
+<%- include('template/header', {tituloweb: 'Inicio EJS'}); %>
+
+<div class="container" style="padding-top: 25px;">
+  <div class="row">   
+    <div class="col-12 col-md-4" style="padding-top: 25px;">
+      <h3>Registro de alumnos</h3>
+      <form action ="/alumnos/registrar" method="POST" style="padding-top: 10px;">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Nombre</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Apellido</label>
+          <input type="text" class="form-control" id="apellido" name="apellido" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Direccion</label>
+          <input type="text" class="form-control" id="direccion" name="direccion" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Edad</label>
+          <input type="number" class="form-control" id="edad" name="edad" required>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-10" style="padding-top: 10px;">
+            <button type="submit" class="btn btn-primary">Registrar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-12 col-md-8" style="padding-top: 25px;">
+      <h3><%= listaAlumnos %></h3>
+      <table class="table">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Dirección</th>
+              <th scope="col">Edad</th>
+            </tr>
+          </thead>
+          <tbody>
+           
+          <% if (arrayAlumnos.length > 0) { %>
+              <% arrayAlumnos.forEach(alumno => { %>
+                  <tr>
+                      <!-- <th scope="row"><%= alumno.id %></th> -->
+                      <td><%= alumno.nombre %> </td>
+                      <td><%= alumno.apellido %></td>
+                      <td><%= alumno.direccion %></td>
+                      <td><%= alumno.edad %></td>
+                    </tr>
+              <% }) %>
+          <% } %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+
+<%- include('template/footer'); %>
